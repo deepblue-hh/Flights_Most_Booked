@@ -8,7 +8,7 @@ colors = px.colors.qualitative.Plotly
 # Load the data
 @st.cache_data
 def load_data():
-    df = pd.read_csv('../data/amadeus_test_production_aug.csv')
+    df = pd.read_csv('./data/amadeus_test_production_aug.csv')
     iata_codes = pd.read_csv('../data/IATA_city_code.csv')
     return df, iata_codes
 
