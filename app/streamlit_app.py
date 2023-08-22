@@ -44,6 +44,20 @@ selected_score = st.sidebar.radio(
     ['score_flights', 'score_travelers']
 )
 
+# Get the minimum and maximum date from the 'month' column
+min_date = df['month'].min().date()
+max_date = df['month'].max().date()
+
+# Create a date slider
+start_date, end_date = st.slider('Select a date range', min_date, max_date, [min_date, max_date])
+
+# Convert selected date range to pd.Timestamp for filtering
+start_date, end_date = pd.Timestamp(start_date), pd.Timestamp(end_date)
+
+# Filter the dataframe based on the selected date range
+df = df[(df['month'] >= start_date) & (df['month'] <= end_date)]
+
+
 # Filtering data based on the selected origin
 filtered_data = df[df['origin_city'] == selected_origin]
 
